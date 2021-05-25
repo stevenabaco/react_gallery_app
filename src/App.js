@@ -1,14 +1,29 @@
+// Import packages
 import React from 'react';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom';
 
-// Import Components, Config, and CSS
-import './App.css';
+// Import Config and CSS files
 import apiKey from './config';
+import './App.css';
+
+// Import Components
+import SearchForm from './components/SearchForm.js';
+import Nav from './components/Nav';
+import Gallery from './components/Gallery';
 
 function App() {
   return (
-    <div>
-   
-    </div>
+    <Router>
+      <div class="container">
+        <SearchForm />
+        <Nav/>
+      </div>
+    </Router>
   );
 }
 
