@@ -1,6 +1,6 @@
 // Import packages
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 // Import Config and CSS files
@@ -19,7 +19,7 @@ class App extends Component {
 			nature: [],
 			food: [],
 			mountains: [],
-			photos: [],
+			search: [],
 			loading: true, // Add state loading indicator for exceeds
 			tag: null,
 		};
@@ -72,11 +72,13 @@ class App extends Component {
 		return (
 			<Router>
 				<div className='container'>
-					<SearchForm />
-					<Nav />
-				</div>
-				<Switch>
-					<Route path='/nature'>
+					<SearchForm search={this.state.search} />
+          <Nav />
+          {this.state.isLoading
+            ? <h2>Loading...</h2>
+            :
+            <Switch>
+					<Route exact path='/nature'>
 						<Gallery
 							data={this.state.nature}
 							title='Nature'
@@ -100,7 +102,10 @@ class App extends Component {
 					<Route path='/search/:query'>
 						<Gallery />
 					</Route>
-				</Switch>
+          </Switch>
+          }
+				
+          </div>
 			</Router>
 		);
 	}

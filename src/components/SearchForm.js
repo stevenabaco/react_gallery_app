@@ -1,7 +1,9 @@
-import React, {Component} from 'react';
+import React, { useRef } from 'react';
+import { useHistory } from 'react-router-dom';
 
-class SearchForm extends Component {
-  render() {
+const SearchForm = props => {
+  const history = useHistory();
+  const {search} = props
     return (
 			<form className='search-form'>
 				<input type='search' name='search' placeholder='Search' required />
@@ -20,6 +22,6 @@ class SearchForm extends Component {
 			</form>
 		);
 }
-}
+
 
 export default SearchForm;
