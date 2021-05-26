@@ -1,6 +1,11 @@
 // Import packages
-import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import {
+	BrowserRouter as Router,
+	Switch,
+	Route,
+	Redirect,
+} from 'react-router-dom';
 import axios from 'axios';
 
 // Import Config and CSS files
@@ -12,103 +17,70 @@ import SearchForm from './components/SearchForm.js';
 import Nav from './components/Nav';
 import Gallery from './components/Gallery';
 
-class App extends Component {
-	constructor() {
-		super();
-		this.state = {
-			nature: [],
-			food: [],
-			mountains: [],
-			search: [],
-			loading: true, // Add state loading indicator for exceeds
-			tag: null,
-		};
-	}
-	// Call function to search for default pictures
-	componentDidMount() {
-		this.performSearch('nature');
-		this.performSearch('food');
-		this.performSearch('mountains');
-	}
-	// Create function with logic to query Flickr API
-	performSearch = query => {
+function App(props) {
+	// Declare hooks for state
+	const [isLoading, setIsLoading] = useState(true);
+	const [response, setResponse] = useState([]);
+	const [search, setSearch] = useState('');
+	const [nature, setNature] = useState([]);
+	const [food, setFood] = useState([]);
+	const [bears, setBears] = useState([]);
+
+	// Fetch default images
+	useEffect(() => {
+		// Send GET request to API for default nature images
+		setSearch('nature');
 		axios
-			// Send GET request to API to fetch data
 			.get(
-				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=%22"${query}"%22&per_page=24&format=json&nojsoncallback=1`
+				`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=%22"${search}"%22&per_page=24&format=json&nojsoncallback=1`
 			)
-			.then(response => {
-				// handle success conditionally to update state properly
-				if (query === 'nature') {
-					this.setState({
-						nature: response.data.photos.photo,
-						tag: query,
-						loading: false,
-					});
-				} else if (query === 'food') {
-					this.setState({
-						food: response.data.photos.photo,
-						tag: query,
-						loading: false,
-					});
-				} else if (query === 'mountains') {
-					this.setState({
-						mountains: response.data.photos.photo,
-						tag: query,
-						loading: false,
-					});
-				}
+			.then(res => {
+				setNature(res.data.photos.photo);
+				setIsLoading(false);
 			})
 			.catch(error => {
-				// handle error
 				console.log('Error fetching and parsing data', error);
-			})
-			.then(function () {
-				// always executed if cleanup needed
 			});
-	};
+	});
 
-	render() {
-		return (
-			<Router>
-				<div className='container'>
-					<SearchForm search={this.state.search} />
-          <Nav />
-          {this.state.isLoading
-            ? <h2>Loading...</h2>
-            :
-            <Switch>
-					<Route exact path='/nature'>
-						<Gallery
-							data={this.state.nature}
-							title='Nature'
-							isLoading={this.state.isLoading}
-						/>
-					</Route>
-					<Route path='/food'>
-						<Gallery
-							data={this.state.food}
-							title='Food'
-							isLoading={this.state.isLoading}
-						/>
-					</Route>
-					<Route path='/mountains'>
-						<Gallery
-							data={this.state.mountains}
-							title='Mountains'
-							isLoading={this.state.isLoading}
-						/>
-					</Route>
-					<Route path='/search/:query'>
-						<Gallery />
-					</Route>
-          </Switch>
-          }
-				
-          </div>
-			</Router>
-		);
-	}
+	return (
+		<Router>
+			<div className='container'>
+				<SearchForm />
+				<Nav />
+				{isLoading ? (
+					<h2>Loading...</h2>
+				) : (
+					<Switch>
+						<Route key='nature' path='/nature'>
+							<Gallery
+								search={nature}
+								title='Nature'
+								isLoading={isLoading}
+							/>
+						</Route>
+						<Route key='food' path='/food'>
+							<Gallery
+								search={food}
+								title='Food'
+								isLoading={isLoading}
+							/>
+						</Route>
+						<Route key='bears' path='/bears'>
+							<Gallery
+								search={bears}
+								title='Bears'
+								isLoading={isLoading}
+							/>
+						</Route>
+						<Route path='/search/:query'>
+							<Gallery />
+						</Route>
+					</Switch>
+				)}
+			</div>
+		</Router>
+	);
 }
 
 export default App;
