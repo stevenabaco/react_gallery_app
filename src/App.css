@@ -70,6 +70,7 @@ input {
   justify-content: space-between;
   -ms-align-items: flex-start;
   align-items: flex-start;
+
 }
 
 .photo-container ul li {
@@ -91,6 +92,19 @@ input {
 
 .photo-container .not-found {
   width: 100%;
+}
+
+/* CSS Modifications to template */
+.photo-container {
+  width: 80vw;
+  margin: auto;
+}
+
+.photo-container ul li {
+  width: 220px;
+  height: 165px;
+  overflow: hidden;
+  margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 767px)  {

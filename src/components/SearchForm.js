@@ -3,9 +3,9 @@ import React, {Component} from 'react';
 class SearchForm extends Component {
   render() {
     return (
-			<form class='search-form'>
+			<form className='search-form'>
 				<input type='search' name='search' placeholder='Search' required />
-				<button type='submit' class='search-button'>
+				<button type='submit' className='search-button'>
 					<svg
 						fill='#fff'
 						height='24'
