@@ -16,11 +16,11 @@ The app also needs to reach out to the Flicker API to perform the search and ret
 <li> Register with Flicker to get an API Key Assigned</li>
 <li> Create a new file called " config.js " in the " src " folder</li>
 <li> In the file add :</li>
-    
+</ol>    
     ```const apiKey = 'ENTER YOUR KEY HERE';
     export default apiKey;```
      
-</ol>
+
 
 In order to start the app you can use ```npm start```
 
