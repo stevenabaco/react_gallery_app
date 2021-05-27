@@ -6,14 +6,19 @@
 
 The React Gallery is an app built using ReactJS. It allows a use to explore the many photographs hosted by Flickr using their API. There are three default search categories which can be selected using the buttons or a user can enter any other topic to search the Flickr database and render up to 24 random pictures. 
 
-## IMPORTANT
+# ** IMPORTANT !! **
 
 The app needs to reach out to the Flicker API to perform the search and return the photographs. In order to allow this functionality the app needs to use an API KEY which is assigned to verified user. Due to the sensitive nature of the API KEY it is installed in a config file which is not included in this repository. In order to use this APP you need to:
 
 <ol>
 <li> Register with Flicker to get an API Key Assigned</li>
 <li> Create a new file called "config.js" in the "src" folder</li>
+<li> In the file add :
+     > const apiKey = 'ENTER YOUR KEY HERE';
+     > export default apiKey; 
 </ol>
+
+The app should be able to access the API and return the images after adding this file.
 
 
 
