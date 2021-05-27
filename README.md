@@ -1,4 +1,4 @@
-# <p align="center">REACT FLICKR API PHOTO GALLERY - PROJECT 7</p>
+# <p align="center">FlickR API Photo Gallery - PROJECT 7</p>
 
 # <p align="center"><a href="https://teamtreehouse.com/techdegree/full-stack-javascript">TREEHOUSE - FULL STACK </a> TECHDEGREE 👍 </p>
 
