@@ -18,8 +18,8 @@ The app also needs to reach out to the Flicker API to perform the search and ret
 <li> In the file add :</li>
 </ol>    
 
-```const apiKey = 'ENTER YOUR KEY HERE'
-   export default apiKey```
+`const apiKey = 'ENTER YOUR KEY HERE'`
+`export default apiKey`
      
 
 
