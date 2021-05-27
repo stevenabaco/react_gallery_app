@@ -1,3 +1,9 @@
+# <p align="center">REACT FLICKR API PHOTO GALLERY - PROJECT 7</p>
+
+# <p align="center"><a href="https://teamtreehouse.com/techdegree/full-stack-javascript">TREEHOUSE - FULL STACK </a> TECHDEGREE 👍 </p>
+
+## PROJECT OVERVIEW
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
