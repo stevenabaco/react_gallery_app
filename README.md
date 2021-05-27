@@ -8,7 +8,9 @@ The React Gallery is an app built using ReactJS. It allows a use to explore the 
 
 # ** IMPORTANT !! **
 
-The app needs to reach out to the Flicker API to perform the search and return the photographs. In order to allow this functionality the app needs to use an API KEY which is assigned to verified user. Due to the sensitive nature of the API KEY it is installed in a config file which is not included in this repository. In order to use this APP you need to:
+After cloning you need to run ```npm install``` to install the app dependencies
+
+The app also needs to reach out to the Flicker API to perform the search and return the photographs. In order to allow this functionality the app needs to use an API KEY which is assigned to verified user. Due to the sensitive nature of the API KEY it is installed in a config file which is not included in this repository. In order to use this APP you need to:
 
 <ol>
 <li> Register with Flicker to get an API Key Assigned</li>
@@ -20,8 +22,9 @@ The app needs to reach out to the Flicker API to perform the search and return t
      
 </ol>
 
-The app should be able to access the API and return the images after adding this file.
+In order to start the app you can use ```npm start```
 
+The app should then be able to access the API and return the images after adding this file.
 
 
 # Getting Started with Create React App
