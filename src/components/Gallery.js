@@ -1,30 +1,33 @@
-import React, { Component } from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import NotFound from './NotFound';
-import Photo from './Photo';
+import GalleryItem from './GalleryItem';
 
-function Gallery({data, title, isLoading}) {
-    let photos;
-		if (data.length > 0) {
-			photos = data.map(photo => (
-				<Photo
-					url={`https://live.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}.jpg`}
-					key={photo.id}
-				/>
-			));
-    } else {
-      photos = <NotFound />
-    }
-		return (
-			<div className='photo-container'>
-				<h1> Images of {title}</h1>
-				<ul>
-					{photos}
-					{/* Not Found */}
-					{/*  */}
-				</ul>
-			</div>
-		);
-	}
+function Gallery({ handler, data, query, title, isLoading }) {
+	// Get URL query parameter
+	let queryString = useParams().query;
+	// Check if URL query matches
 
+	useEffect(() => {
+		if (queryString !== query) {
+			handler(queryString);
+		}
+	});
+	return (
+		<div className='photo-container'>
+			<h1>
+				{' '}
+				Images of <span>{queryString || title}</span>
+			</h1>
+			<ul>
+				{data.length > 0 && !isLoading ? (
+					data.map(image => <GalleryItem image={image} key={image.id} />)
+				) : (
+					<NotFound />
+				)}
+			</ul>
+		</div>
+	);
+}
 
 export default Gallery;

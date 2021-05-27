@@ -95,16 +95,14 @@ input {
 }
 
 /* CSS Modifications to template */
-.photo-container {
-  width: 80vw;
-  margin: auto;
-}
 
 .photo-container ul li {
   width: 220px;
-  height: 165px;
+  height: 135px;
   overflow: hidden;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 10px rgb(0, 0, 0), 1px 1px 15px rgb(109, 109, 109);
 }
 
 @media only screen and (max-width: 767px)  {
