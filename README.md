@@ -15,8 +15,8 @@ The app needs to reach out to the Flicker API to perform the search and return t
 <li> Create a new file called "config.js" in the "src" folder</li>
 <li> In the file add :</li>
     
-    > const apiKey = 'ENTER YOUR KEY HERE';
-    > export default apiKey;
+    const apiKey = 'ENTER YOUR KEY HERE';
+    export default apiKey;
      
 </ol>
 
